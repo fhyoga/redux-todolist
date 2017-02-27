@@ -12,7 +12,7 @@ class App extends Component {
             <div>
                 <AddTodo onAdd={text=>dispatch(addTodo(text))}/>
                 <TodoList todos={visibilityTodos}
-                          onTodo={index=>{console.log(1);dispatch(toggleTodo(index))}}
+                          onTodo={index=>dispatch(toggleTodo(index))}
                 />
                 <Footer filter={visibilityFilter}
                         onSet={filter=>dispatch(setVisibilityFilter(filter))}
@@ -26,6 +26,7 @@ const todoSelect = (todos, filter) => {
 
     switch (filter) {
         case VisibilityFilters.SHOW_ACTIVE:
+            console.log(filter)
             return todos.filter(todo => !todo.completed);
         case VisibilityFilters.SHOW_COMPLETED:
             return todos.filter(todo => todo.completed);
@@ -37,7 +38,7 @@ const todoSelect = (todos, filter) => {
 const selet = (state) => {
     console.log(state);
     return {
-        visibilityTodos: todoSelect(state.todos, state.filter),
+        visibilityTodos: todoSelect(state.todos, state.visibilityFilter),
         visibilityFilter: state.visibilityFilter
     }
 }

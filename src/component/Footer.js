@@ -1,9 +1,13 @@
 import React from 'react'
+import {VisibilityFilters} from '../action/action'
 
-export const Footer = ()=>{
+export const Footer = (props)=>{
+
     return (
         <div>
-            <a href="">1</a><a href="">2</a><a href="">3</a>
+            <a onClick={()=>props.onSet(VisibilityFilters.SHOW_ALL)}>all</a>
+            <a onClick={()=>props.onSet(VisibilityFilters.SHOW_COMPLETED)}>completed</a>
+            <a onClick={()=>props.onSet(VisibilityFilters.SHOW_ACTIVE)}>uncompleted</a>
         </div>
     )
 }
