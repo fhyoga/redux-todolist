@@ -4,7 +4,12 @@ export default class Todo extends Component{
     render(){
         return (
             <div>
-                <h3>11111111111</h3>
+                <h5 onClick={this.props.onClick}
+                    style={{
+                        textDecoration: this.props.completed ? 'line-through' : 'none',
+                        cursor: this.props.completed ? 'default' : 'pointer'
+                    }} >
+                {this.props.text}</h5>
             </div>
         )
     }

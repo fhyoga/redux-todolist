@@ -7,12 +7,12 @@ import {Footer} from './component/Footer';
 class App extends Component {
 
     render() {
-        const {dispatch, visilityTodos, visibilityFilter,}=this.props;
+        const {dispatch, visibilityTodos, visibilityFilter,}=this.props;
         return (
             <div>
                 <AddTodo onAdd={text=>dispatch(addTodo(text))}/>
-                <TodoList todos={visilityTodos}
-                          onTodo={index=>dispatch(toggleTodo(index))}
+                <TodoList todos={visibilityTodos}
+                          onTodo={index=>{console.log(1);dispatch(toggleTodo(index))}}
                 />
                 <Footer filter={visibilityFilter}
                         onSet={filter=>dispatch(setVisibilityFilter(filter))}
@@ -35,6 +35,7 @@ const todoSelect = (todos, filter) => {
     }
 };
 const selet = (state) => {
+    console.log(state);
     return {
         visibilityTodos: todoSelect(state.todos, state.filter),
         visibilityFilter: state.visibilityFilter
